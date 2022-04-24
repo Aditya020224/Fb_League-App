@@ -67,7 +67,7 @@ if st.button('Intercorrelation Heatmap'):
         fig, ax = plt.subplots(figsize=(7, 5))
         ax = sns.heatmap(corr, mask=mask, vmax=1,cmap="YlGnBu",linewidths=.5,square=True)
     st.button('Intercorrelation Clustermap')
-        g = sns.clustermap(corr,cmap="vlag",vmin=0,vmax=10)
+    g = sns.clustermap(corr,cmap="vlag",vmin=0,vmax=10)
     st.pyplot(fig)
     st.pyplot(g)
     st.set_option('deprecation.showPyplotGlobalUse', False)
