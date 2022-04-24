@@ -70,7 +70,13 @@ if st.button('Intercorrelation Heatmap'):
      
 if st.button('Intercorrelation Clustermap'):
     st.header('Intercorrelation Matrix Heatmap')
-    g = sns.clustermap(corr,cmap="vlag",vmin=0,vmax=10)
-    st.pyplot(g)
-    st.set_option('deprecation.showPyplotGlobalUse', False)
+    df_selected_team.to_csv('output.csv',index=False)
+    df = pd.read_csv('output.csv')
+
+    corr = df.corr()
+    with sns.axes_style("white"):
+       fig, ax = plt.subplots(figsize=(7, 5))
+       g = sns.clustermap(corr,cmap="vlag",vmin=0,vmax=10)
+       st.pyplot(g)
+       st.set_option('deprecation.showPyplotGlobalUse', False)
 
