@@ -64,11 +64,13 @@ if st.button('Intercorrelation Heatmap'):
     mask = np.zeros_like(corr)
     mask[np.triu_indices_from(mask)] = True
     with sns.axes_style("white"):
-        fig, ax = plt.subplots(figsize=(7, 5))
-        ax = sns.heatmap(corr, mask=mask, vmax=1,cmap="YlGnBu",linewidths=.5,square=True)
-    st.button('Intercorrelation Clustermap')
-    g = sns.clustermap(corr,cmap="vlag",vmin=0,vmax=10)
+    fig, ax = plt.subplots(figsize=(7, 5))
+    ax = sns.heatmap(corr, mask=mask, vmax=1,cmap="YlGnBu",linewidths=.5,square=True)
     st.pyplot(fig)
+     
+if st.button('Intercorrelation Clustermap'):
+    st.header('Intercorrelation Matrix Heatmap')
+    g = sns.clustermap(corr,cmap="vlag",vmin=0,vmax=10)
     st.pyplot(g)
     st.set_option('deprecation.showPyplotGlobalUse', False)
 
