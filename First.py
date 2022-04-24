@@ -66,10 +66,8 @@ if st.button('Intercorrelation Heatmap'):
     with sns.axes_style("white"):
         fig, ax = plt.subplots(figsize=(7, 5))
         ax = sns.heatmap(corr, mask=mask, vmax=1,cmap="YlGnBu",linewidths=.5,square=True)
-        
-        lut = dict(zip(corr.unique(), "rbg"))
-        row_colors = corr.map(lut)
-        g = sns.clustermap(corr,row_colors=row_colors,vmin=0,vmax=10)
+    st.button('Intercorrelation Clustermap'):
+        g = sns.clustermap(corr,cmap="vlag",vmin=0,vmax=10)
     st.pyplot(fig)
     st.pyplot(g)
     st.set_option('deprecation.showPyplotGlobalUse', False)
