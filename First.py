@@ -17,7 +17,7 @@ st.sidebar.header('User Input Features')
 selected_year = st.sidebar.selectbox('Year', list(reversed(range(1990,2022))))
 
 # Web scraping of NFL player stats
-# https://www.pro-football-reference.com/years/2019/rushing.htm
+# https://www.pro-football-reference.com/years/2022/rushing.htm
 @st.cache
 def load_data(year):
     url = "https://www.pro-football-reference.com/years/" + str(year) + "/rushing.htm"
@@ -68,8 +68,9 @@ if st.button('Intercorrelation Heatmap'):
        ax = sns.heatmap(corr, mask=mask, vmax=1,cmap="YlGnBu",linewidths=.5,square=True)
        st.pyplot(fig)
      
+# Clustermap      
 if st.button('Intercorrelation Clustermap'):
-    st.header('Intercorrelation Matrix Heatmap')
+    st.header('Intercorrelation Matrix Clustermap')
     df_selected_team.to_csv('output.csv',index=False)
     df = pd.read_csv('output.csv')
 
