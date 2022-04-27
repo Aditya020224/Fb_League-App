@@ -77,7 +77,7 @@ if st.button('Intercorrelation Clustermap'):
     df = pd.read_csv('output.csv')
 
     corr = df.corr()
-    with sns.axes_style("lightgrey"):
+    with sns.axes_style("white"):
        fig, ax = plt.subplots(figsize=(7, 5))
        g = sns.clustermap(corr,cmap="vlag",vmin=0,vmax=10)
        st.pyplot(g)
