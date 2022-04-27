@@ -34,7 +34,7 @@ sorted_unique_team = sorted(playerstats.Tm.unique())
 selected_team = st.sidebar.multiselect('Team', sorted_unique_team, sorted_unique_team)
 
 # Sidebar - Position selection
-unique_pos = ['RB','QB','WR','FB','TE']
+unique_pos = ['RB','QB','WR','FB','TE','DT','DB']
 selected_pos = st.sidebar.multiselect('Position', unique_pos, unique_pos)
 
 # Filtering data
