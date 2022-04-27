@@ -9,16 +9,15 @@ import matplotlib.pyplot as plt
 st.title('National Football League Stats (Rushing) Explorer')
 
 st.markdown("""
-This app performs simple webscraping of NFL Football player stats data (focusing on Rushing)!
-* **Python libraries:** base64, pandas, streamlit, numpy, matplotlib, seaborn
-* **Data source:** [pro-football-reference.com](https://www.pro-football-reference.com/).
+This website or app performs simple web-scraping of NFL Football player stats data--[mainly focusing on Rushing ones]!
+* *Python libraries:* base64, pandas, streamlit, numpy, matplotlib, seaborn
 """)
 
 st.sidebar.header('USER INPUT')
-selected_year = st.sidebar.selectbox('YEAR', list(reversed(range(1990,2022))))
+selected_year = st.sidebar.selectbox('YEAR', list(reversed(range(1990,2023))))
 
 # Web scraping of NFL player stats
-# https://www.pro-football-reference.com/years/2022/rushing.htm
+# https://www.pro-football-reference.com/years/2023/rushing.htm
 @st.cache
 def load_data(year):
     url = "https://www.pro-football-reference.com/years/" + str(year) + "/rushing.htm"
@@ -35,13 +34,13 @@ sorted_unique_team = sorted(playerstats.Tm.unique())
 selected_team = st.sidebar.multiselect('TEAM', sorted_unique_team, sorted_unique_team)
 
 # Sidebar - Position selection
-unique_pos = ['RB','QB','WR','FB','TE','DT','DB']
+unique_pos = ['QB','RB','DT','TE','FB','WR','DB']
 selected_pos = st.sidebar.multiselect('POSITION', unique_pos, unique_pos)
 
 # Filtering data
 df_selected_team = playerstats[(playerstats.Tm.isin(selected_team)) & (playerstats.Pos.isin(selected_pos))]
 
-st.header('Display Player Stats of Selected Team(s)')
+st.header('Show Player Stats of Selected Team(s)')
 st.write('Data Dimension: ' + str(df_selected_team.shape[0]) + ' rows and ' + str(df_selected_team.shape[1]) + ' columns.')
 st.dataframe(df_selected_team)
 
@@ -82,5 +81,5 @@ if st.button('Intercorrelation Clustermap'):
        g = sns.clustermap(corr,cmap="vlag",vmin=0,vmax=10)
        st.pyplot(g)
 
-       st.set_option('deprecation.showPyplotGlobalUse', False)
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
