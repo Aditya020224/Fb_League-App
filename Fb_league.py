@@ -10,7 +10,8 @@ st.title('National Football League Stats (Rushing) Explorer')
 
 st.markdown("""
 This website or app performs simple web-scraping of NFL Football player stats data--[mainly focusing on Rushing ones]!
-* *Python libraries:* base64, pandas, streamlit, numpy, matplotlib, seaborn
+* **Python libraries:** base64, pandas, streamlit, numpy, matplotlib, seaborn
+* **Data source:** [pro-football-reference.com](https://www.pro-football-reference.com/).
 """)
 
 st.sidebar.header('USER INPUT')
