@@ -14,8 +14,8 @@ This app performs simple webscraping of NFL Football player stats data (focusing
 * **Data source:** [pro-football-reference.com](https://www.pro-football-reference.com/).
 """)
 
-st.sidebar.header('User Input Features')
-selected_year = st.sidebar.selectbox('Year', list(reversed(range(1990,2022))))
+st.sidebar.header('USER INPUT')
+selected_year = st.sidebar.selectbox('YEAR', list(reversed(range(1990,2022))))
 
 # Web scraping of NFL player stats
 # https://www.pro-football-reference.com/years/2022/rushing.htm
@@ -32,11 +32,11 @@ playerstats = load_data(selected_year)
 
 # Sidebar - Team selection
 sorted_unique_team = sorted(playerstats.Tm.unique())
-selected_team = st.sidebar.multiselect('Team', sorted_unique_team, sorted_unique_team)
+selected_team = st.sidebar.multiselect('TEAM', sorted_unique_team, sorted_unique_team)
 
 # Sidebar - Position selection
 unique_pos = ['RB','QB','WR','FB','TE','DT','DB']
-selected_pos = st.sidebar.multiselect('Position', unique_pos, unique_pos)
+selected_pos = st.sidebar.multiselect('POSITION', unique_pos, unique_pos)
 
 # Filtering data
 df_selected_team = playerstats[(playerstats.Tm.isin(selected_team)) & (playerstats.Pos.isin(selected_pos))]
@@ -77,7 +77,7 @@ if st.button('Intercorrelation Clustermap'):
     df = pd.read_csv('output.csv')
 
     corr = df.corr()
-    with sns.axes_style("lightgrey"):
+    with sns.axes_style("white"):
        fig, ax = plt.subplots(figsize=(7, 5))
        g = sns.clustermap(corr,cmap="vlag",vmin=0,vmax=10)
        st.pyplot(g)
